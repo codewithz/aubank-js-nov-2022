@@ -1,19 +1,35 @@
 console.log("Before");
 
-const user = getUser(1000);
-console.log(user);
+getUser(1000, (user) => {
+  console.log("User:", user);
+
+  getRepositories(user.githubId, (repos) => {
+    repos.forEach((repo) => console.log(repo));
+  });
+});
 
 console.log("After");
-// There are three ways to deal with asynchronous code
 
-// 1. Callbacks
-// 2. Promises
-// 3. Async Await
-function getUser(id) {
+function getUser(id, callback) {
   setTimeout(() => {
-    console.log("Reading user data from database....");
-    return { id: 1000, github: "codewithz" };
+    console.log("Loading data from database .....");
+    const user = { id: 1000, githubId: "codewithz" };
+    callback(user);
   }, 3000);
+}
 
-  return "xyz";
+function getRepositories(githubId, callback) {
+  setTimeout(() => {
+    console.log(`Calling http://github.com/${githubId} ....`);
+    const repos = ["repo1", "repo2", "repo3"];
+    callback(repos);
+  }, 4000);
+}
+
+// function displayUser(user) {
+//   console.log("User:", user);
+// }
+
+function displayRepos(repos) {
+  repos.forEach((repo) => console.log(repo));
 }
