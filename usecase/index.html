@@ -33,6 +33,7 @@
               id="customer-name"
               class="form-control"
               placeholder="Enter Name"
+              onchange="validateName(this.value)"
             />
             <span class="text-danger" id="error-name"></span>
           </div>
@@ -46,6 +47,7 @@
               id="customer-email"
               class="form-control"
               placeholder="Enter Email"
+              onchange="validateEmail(this.value)"
             />
             <span class="text-danger" id="error-email"></span>
           </div>
@@ -59,6 +61,7 @@
               id="customer-contact"
               class="form-control"
               placeholder="Enter Contact"
+              onchange="validateContact(this.value)"
             />
             <span class="text-danger" id="error-contact"></span>
           </div>
@@ -67,12 +70,16 @@
         <div class="form-group row">
           <label for="" class="control-label col-sm-2">Account Type:</label>
           <div class="col-sm-10">
-            <select id="customer-account-type" class="form-control">
+            <select
+              id="customer-account-type"
+              class="form-control"
+              onchange="validateAccountType(this.value)"
+            >
               <option value="">Select Account Type</option>
               <option value="savings">Savings</option>
               <option value="current">Current</option>
             </select>
-            <span class="text-danger" id="error-contact"></span>
+            <span class="text-danger" id="error-account-type"></span>
           </div>
         </div>
         <br /><br />
@@ -81,5 +88,6 @@
         </div>
       </form>
     </div>
+    <script src="scripts/main.js"></script>
   </body>
 </html>
